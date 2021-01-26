@@ -135,7 +135,7 @@
 
 (eval-and-compile
   ;; for callf
-  (require 'cl))
+  (require 'cl-lib))
 
 (require 'pcache     nil t)
 (require 'list-utils nil t)
@@ -373,16 +373,16 @@ Returns a true value if storage was successful.  Returns nil
 on failure, without throwing an error."
   (when (and (featurep 'pcache)
              (stringp location))
-    (callf or expiration (round (* 60 60 24 persistent-soft-default-expiration-days)))
-    (callf persistent-soft--sanitize-data value)
+    (cl-callf or expiration (round (* 60 60 24 persistent-soft-default-expiration-days)))
+    (cl-callf persistent-soft--sanitize-data value)
     (let ((repo (ignore-errors
                   (persistent-soft--with-suppressed-messages
-                    (pcache-repository location))))
+                   (pcache-repository location))))
           (print-level nil)
           (print-length nil))
       (and repo (ignore-errors
                   (persistent-soft--with-suppressed-messages
-                    (pcache-put repo symbol value expiration)))))))
+                   (pcache-put repo symbol value expiration)))))))
 
 (provide 'persistent-soft)
 
@@ -397,7 +397,7 @@ on failure, without throwing an error."
 ;; byte-compile-warnings: (not cl-functions redefine)
 ;; End:
 ;;
-;; LocalWords:  pcache eieio callf mydatastore utils devel flet EIEIO
+;; LocalWords:  pcache eieio cl-callf mydatastore utils devel flet EIEIO
 ;;
 
 ;;; persistent-soft.el ends here
