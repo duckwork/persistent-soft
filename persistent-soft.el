@@ -6,7 +6,7 @@
 ;; Homepage: http://github.com/rolandwalker/persistent-soft
 ;; URL: http://raw.githubusercontent.com/rolandwalker/persistent-soft/master/persistent-soft.el
 ;; Version: 0.8.10
-;; Last-Updated: 23 Feb 2015
+;; Last-Updated: 26 Jan 2021
 ;; EmacsWiki: PersistentSoft
 ;; Keywords: data, extensions
 ;; Package-Requires: ((pcache "0.3.1") (list-utils "0.4.2"))
